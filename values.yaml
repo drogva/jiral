@@ -13,8 +13,7 @@ image:
 
 
 imagePullSecrets: ecr-registry-secret
-nameOverride: ""
-fullnameOverride: ""
+   name: ecr-registry-secret
 
 serviceAccount:
   # Specifies whether a service account should be created
