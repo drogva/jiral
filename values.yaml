@@ -10,7 +10,7 @@ image:
   repository: 553186839963.dkr.ecr.ap-northeast-2.amazonaws.com/drogva:kpop
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+
 
 imagePullSecrets: ecr-registry-secret
 nameOverride: ""
