@@ -11,7 +11,7 @@ image:
   pullPolicy: Always
 
 imagePullSecrets:
-  name: ecr-registry-secret
+  - name: ecr-registry-secret  # 수정된 부분
 
 serviceAccount:
   create: true
