@@ -46,6 +46,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "tks-contract.selectorLabels" -}}
+app.kubernetes.io/service: tks
 app.kubernetes.io/name: {{ include "tks-contract.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
