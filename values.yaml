@@ -21,13 +21,11 @@ serviceAccount:
 
 args: 
   port: 8080
-  dbUrl: database-1.cg5x8ymzexwa.ap-northeast-2.rds.amazonaws.com
-  dbPort: 3306
-  dbUser: root
-  dbPassword: bizkit87
   tksInfoAddress: tks-info.tks.svc
   tksInfoPort: 9110
 
+
+ 
 podAnnotations: {}
 podLabels: {}
 
