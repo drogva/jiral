@@ -8,9 +8,8 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - port:{{ .Values.service.port }}
+      targetPort: {{ .Values.args.port }}
       protocol: TCP
-      name: http
   selector:
     {{- include "tks-contract.selectorLabels" . | nindent 4 }}
