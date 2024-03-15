@@ -7,7 +7,7 @@ replicaCount: 1
 namespace: tks
 
 image:
-  repository: 553186839963.dkr.ecr.ap-northeast-2.amazonaws.com/drogva:kpop
+  repository: 553186839963.dkr.ecr.ap-northeast-2.amazonaws.com/drogva:drogva
   pullPolicy: Always
 
 imagePullSecrets:
