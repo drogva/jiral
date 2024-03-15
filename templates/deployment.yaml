@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -46,14 +45,9 @@ spec:
             "-port", "{{ .Values.args.port }}",
             "-info-address", "{{ .Values.args.tksInfoAddress }}",
             "-info-port", "{{ .Values.args.tksInfoPort }}"
-
-
-            ]
-
+          ]
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-         {{- with .Values.nodeSelector }}
-
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
