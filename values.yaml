@@ -7,7 +7,7 @@ replicaCount: 1
 namespace: tks
 
 image:
-  repository: 553186839963.dkr.ecr.ap-northeast-2.amazonaws.com/drogva:hi
+  repository: 553186839963.dkr.ecr.ap-northeast-2.amazonaws.com/drogva:drogva
   pullPolicy: Always
 
 imagePullSecrets:
@@ -19,13 +19,11 @@ serviceAccount:
   annotations: {}
   name: "tks-info"
 
-args: 
+args:
   port: 8080
   tksInfoAddress: tks-info.tks.svc
   tksInfoPort: 9110
 
-
- 
 podAnnotations: {}
 podLabels: {}
 
@@ -36,8 +34,38 @@ service:
   type: LoadBalancer
   port: 9110
 
+# ingress 설정을 추가합니다.
 ingress:
-  enabled: false
+  # Ingress를 활성화합니다.
+  enabled: true
+  # Ingress 클래스 이름을 지정합니다. (선택사항)
+  className: "alb"
+  # Ingress의 annotations를 추가합니다.
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-northeast-2:553186839963:certificate/8c14b185-958d-4af1-8340-4930f6d6fb1d"
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+  # Ingress에 대한 호스트 정보를 설정합니다.
+  hosts:
+    # 호스트를 추가합니다.
+    - host: www.seunghobet.link
+      paths:
+        # 경로를 설정합니다.
+        - path: /
+          pathType: Prefix
+  # TLS 설정을 추가합니다.
+  tls:
+    # Secret 이름을 지정합니다.
+    - secretName: tls-secret
+
+  # 백엔드 서비스 설정을 추가합니다.
+  backend:
+    service: jiral-tks-contract
+    port:  # 백엔드 서비스 포트 설정
+      number: 9110
+    servicePort: 9110  # 서비스의 포트 번호
 
 resources: {}
 
