@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-namespace: tks
+namespace: jenkins
 
 image:
   repository: 553186839963.dkr.ecr.ap-northeast-2.amazonaws.com/drogva:lamda
