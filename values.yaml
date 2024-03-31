@@ -20,7 +20,7 @@ serviceAccount:
   name: "tks-info"
 
 args:
-  port: 8080
+  port: 80
   tksInfoAddress: tks-info.tks.svc
   tksInfoPort: 9110
 
